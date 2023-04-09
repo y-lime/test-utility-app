@@ -6,8 +6,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import com.example.testutilityapp.testutil.log.LoggingEventExtension;
-
 import ch.qos.logback.classic.spi.ILoggingEvent;
 
 @ExtendWith(LoggingEventExtension.class)
