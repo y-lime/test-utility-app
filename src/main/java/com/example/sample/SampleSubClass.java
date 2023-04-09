@@ -1,4 +1,4 @@
-package com.example.mock.sample;
+package com.example.sample;
 
 public class SampleSubClass {
 

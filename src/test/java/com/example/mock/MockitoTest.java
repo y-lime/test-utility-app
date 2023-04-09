@@ -18,9 +18,9 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 
-import com.example.mock.sample.SampleClass;
-import com.example.mock.sample.SampleStaticMethods;
-import com.example.mock.sample.SampleSubClass;
+import com.example.sample.SampleClass;
+import com.example.sample.SampleStaticMethods;
+import com.example.sample.SampleSubClass;
 
 // テストクラスのインスタンスフィールドで@InjectMocks、@Mockを使用する場合は、@ExtendWithは必須
 @ExtendWith(MockitoExtension.class)

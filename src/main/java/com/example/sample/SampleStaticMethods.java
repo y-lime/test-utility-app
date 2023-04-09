@@ -1,4 +1,4 @@
-package com.example.mock.sample;
+package com.example.sample;
 
 public class SampleStaticMethods {
     public static int calcAdd(int x, int y) {

@@ -16,9 +16,9 @@ import org.mockito.MockedStatic;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.example.mock.sample.SampleClass;
-import com.example.mock.sample.SampleStaticMethods;
-import com.example.mock.sample.SampleSubClass;
+import com.example.sample.SampleClass;
+import com.example.sample.SampleStaticMethods;
+import com.example.sample.SampleSubClass;
 
 @ExtendWith(MockitoExtension.class)
 class SpyTest {
