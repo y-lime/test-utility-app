@@ -5,7 +5,7 @@ public class SampleStaticMethods {
         return x + y;
     }
 
-    public static int callSub(int x, int y) {
+    public static int calcSub(int x, int y) {
         return x - y;
     }
 }

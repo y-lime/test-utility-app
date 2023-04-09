@@ -51,7 +51,7 @@ class MockitoTest {
         ArgumentCaptor<Integer> yCaptor = ArgumentCaptor.forClass(Integer.class);
 
         when(sampleSubClass.calcAdd(anyInt(), anyInt())).thenReturn(10);
-        Assertions.assertThat(sampleClass.calc(1, 2)).isEqualTo(10);
+        Assertions.assertThat(sampleClass.calcAdd(1, 2)).isEqualTo(10);
 
         verify(sampleSubClass, times(1)).calcAdd(xCaptor.capture(), yCaptor.capture());
         Assertions.assertThat(xCaptor.getValue()).isEqualTo(1);
@@ -127,7 +127,7 @@ class MockitoTest {
         ArgumentCaptor<Integer> yCaptor = ArgumentCaptor.forClass(Integer.class);
 
         sampleStaticMethods.when(() -> SampleStaticMethods.calcAdd(anyInt(), anyInt())).thenReturn(10);
-        Assertions.assertThat(sampleClass.calcUsingStaticMethod(1, 2)).isEqualTo(10);
+        Assertions.assertThat(sampleClass.calcAddUsingStaticMethod(1, 2)).isEqualTo(10);
 
         // MockedStaticのverifyは書き方がちょっと変わる
         sampleStaticMethods.verify(() -> SampleStaticMethods.calcAdd(xCaptor.capture(), yCaptor.capture()));

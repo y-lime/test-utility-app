@@ -23,18 +23,28 @@ public class SampleClass {
         return sampleSubClass.concatMessage(prefix.toUpperCase());
     }
 
-    public int calc(int a, int b) {
+    public int calcAdd(int a, int b) {
         int result;
         result = sampleSubClass.calcAdd(a, b);
 
         return result;
     }
 
-    public int calcUsingStaticMethod(int a, int b) {
+    public int calcSub(int a, int b) {
         int result;
+        result = sampleSubClass.calcSub(a, b);
+        return result;
+    }
 
+    public int calcAddUsingStaticMethod(int a, int b) {
+        int result;
         result = SampleStaticMethods.calcAdd(a, b);
+        return result;
+    }
 
+    public int calcSubUsingStaticMethod(int a, int b) {
+        int result;
+        result = SampleStaticMethods.calcSub(a, b);
         return result;
     }
 
