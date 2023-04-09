@@ -1,4 +1,4 @@
-package com.example.stdout;
+package com.example.testutilityapp.stdout;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;

@@ -1,4 +1,4 @@
-package com.example.sample;
+package com.example.testutilityapp.sample;
 
 public class SampleStaticMethods {
     public static int calcAdd(int x, int y) {

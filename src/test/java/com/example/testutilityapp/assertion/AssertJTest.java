@@ -1,4 +1,4 @@
-package com.example.assertion;
+package com.example.testutilityapp.assertion;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.mock;
+package com.example.testutilityapp.mock;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -18,9 +18,9 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 
-import com.example.sample.SampleClass;
-import com.example.sample.SampleStaticMethods;
-import com.example.sample.SampleSubClass;
+import com.example.testutilityapp.sample.SampleClass;
+import com.example.testutilityapp.sample.SampleStaticMethods;
+import com.example.testutilityapp.sample.SampleSubClass;
 
 // テストクラスのインスタンスフィールドで@InjectMocks、@Mockを使用する場合は、@ExtendWithは必須
 @ExtendWith(MockitoExtension.class)

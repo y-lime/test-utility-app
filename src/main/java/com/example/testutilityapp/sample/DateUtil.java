@@ -1,4 +1,4 @@
-package com.example.mock.sample;
+package com.example.testutilityapp.sample;
 
 import java.util.Calendar;
 import java.util.Date;

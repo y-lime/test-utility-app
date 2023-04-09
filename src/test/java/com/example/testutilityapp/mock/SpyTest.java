@@ -1,4 +1,4 @@
-package com.example.mock;
+package com.example.testutilityapp.mock;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -16,9 +16,9 @@ import org.mockito.MockedStatic;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.example.sample.SampleClass;
-import com.example.sample.SampleStaticMethods;
-import com.example.sample.SampleSubClass;
+import com.example.testutilityapp.sample.SampleClass;
+import com.example.testutilityapp.sample.SampleStaticMethods;
+import com.example.testutilityapp.sample.SampleSubClass;
 
 @ExtendWith(MockitoExtension.class)
 class SpyTest {

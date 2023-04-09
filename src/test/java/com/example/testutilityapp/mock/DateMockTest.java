@@ -1,4 +1,4 @@
-package com.example.mock;
+package com.example.testutilityapp.mock;
 
 class DateMockTest {
 

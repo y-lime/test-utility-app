@@ -1,4 +1,4 @@
-package com.example.sample;
+package com.example.testutilityapp.sample;
 
 public class SampleClass {
     private SampleSubClass sampleSubClass;
