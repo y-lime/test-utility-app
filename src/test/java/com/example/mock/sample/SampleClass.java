@@ -11,12 +11,16 @@ public class SampleClass {
         return sampleSubClass.getX();
     }
 
+    public void initSubX() {
+        sampleSubClass.setX(10);
+    }
+
     public String getSubMessage() {
         return sampleSubClass.getMessage();
     }
 
     public String getSubMessageWithPrefix(String prefix) {
-        return sampleSubClass.concatMessage(prefix);
+        return sampleSubClass.concatMessage(prefix.toUpperCase());
     }
 
     public int calc(int a, int b) {
