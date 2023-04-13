@@ -20,6 +20,7 @@ import com.example.testutilityapp.service.SampleUtilService;
 @SpringBootTest
 class SampleServiceSpyTest {
 
+    // singletonスコープでないモックを使用する時は、@SpyBeanを使用してもMock化できない
     @MockBean(answer = Answers.CALLS_REAL_METHODS)
     private SampleUtilService sampleUtilService;
 
