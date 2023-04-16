@@ -1,10 +1,10 @@
 package com.example.testutilityapp.controller;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Controller
-@Scope("request")
+@RequestScope
 public class SampleController {
 
 }

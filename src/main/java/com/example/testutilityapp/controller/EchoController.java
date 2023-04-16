@@ -5,12 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.annotation.RequestScope;
 
 import com.example.testutilityapp.form.EchoForm;
 
 import jakarta.validation.Valid;
 
 @Controller
+@RequestScope
 @RequestMapping("echo")
 public class EchoController {
 
