@@ -23,6 +23,8 @@ import com.example.testutilityapp.service.TranslateCaseService;
 
 import jakarta.servlet.http.HttpSession;
 
+// SpringMvc コントローラのテストには@WebMvcTestアノテーションを使用する
+// 単一のコントローラに限定してテストする
 @WebMvcTest(controllers = EchoController.class)
 class EchoControllerTest {
 

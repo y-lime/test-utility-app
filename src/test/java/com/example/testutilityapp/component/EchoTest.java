@@ -15,6 +15,7 @@ import com.example.testutilityapp.form.EchoForm;
 
 import jakarta.servlet.http.HttpSession;
 
+// MockMvcを使用するために、@AutoCinfigureMockMvcを使用する
 @SpringBootTest
 @AutoConfigureMockMvc
 class EchoTest {
