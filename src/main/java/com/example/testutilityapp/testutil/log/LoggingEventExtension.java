@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
@@ -22,8 +23,6 @@ public class LoggingEventExtension implements BeforeEachCallback, AfterEachCallb
 
     private static ThreadLocal<Deque<Appender<ILoggingEvent>>> appendersHolder = new ThreadLocal<>();
 
-    // TODO ロガーごとにキューに貯める or 抽出できないか？
-
     public static List<ILoggingEvent> getLoggingEvent() {
         Deque<ArgumentCaptor<ILoggingEvent>> loggingEventCaptors = loggingEventCaptorsHolder.get();
         if (loggingEventCaptors == null || loggingEventCaptors.isEmpty()) {
@@ -31,6 +30,16 @@ public class LoggingEventExtension implements BeforeEachCallback, AfterEachCallb
         }
         ArgumentCaptor<ILoggingEvent> loggingEventCaptor = loggingEventCaptors.peek();
         return Collections.unmodifiableList(loggingEventCaptor.getAllValues());
+    }
+
+    public static List<ILoggingEvent> getLoggingEvent(String loggername) {
+        Deque<ArgumentCaptor<ILoggingEvent>> loggingEventCaptors = loggingEventCaptorsHolder.get();
+        if (loggingEventCaptors == null || loggingEventCaptors.isEmpty()) {
+            return Collections.emptyList();
+        }
+        ArgumentCaptor<ILoggingEvent> loggingEventCaptor = loggingEventCaptors.peek();
+        return loggingEventCaptor.getAllValues().stream().filter(e -> e.getLoggerName().equals(loggername))
+                .collect(Collectors.toUnmodifiableList());
     }
 
     @Override

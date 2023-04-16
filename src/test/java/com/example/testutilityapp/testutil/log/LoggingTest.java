@@ -28,4 +28,32 @@ class LoggingTest {
 
     }
 
+    @Test
+    void ロガーごとに検証() throws Exception {
+        org.slf4j.Logger infologger = org.slf4j.LoggerFactory.getLogger("INFO");
+        org.slf4j.Logger errorlogger = org.slf4j.LoggerFactory.getLogger("ERROR");
+
+        infologger.info("first message");
+        infologger.error("second message");
+        errorlogger.info("third message");
+        errorlogger.error("fourth message");
+
+        List<ILoggingEvent> infoevents = LoggingEventExtension.getLoggingEvent("INFO");
+        Assertions.assertThat(infoevents).hasSize(2);
+        Assertions.assertThat(infoevents.get(0).getLevel()).isEqualTo(ch.qos.logback.classic.Level.INFO);
+        Assertions.assertThat(infoevents.get(0).getLoggerName()).isEqualTo("INFO");
+        Assertions.assertThat(infoevents.get(0).getMessage()).isEqualTo("first message");
+        Assertions.assertThat(infoevents.get(1).getLevel()).isEqualTo(ch.qos.logback.classic.Level.ERROR);
+        Assertions.assertThat(infoevents.get(1).getLoggerName()).isEqualTo("INFO");
+        Assertions.assertThat(infoevents.get(1).getMessage()).isEqualTo("second message");
+
+        List<ILoggingEvent> errorevents = LoggingEventExtension.getLoggingEvent("ERROR");
+        Assertions.assertThat(errorevents).hasSize(2);
+        Assertions.assertThat(errorevents.get(0).getLevel()).isEqualTo(ch.qos.logback.classic.Level.INFO);
+        Assertions.assertThat(errorevents.get(0).getLoggerName()).isEqualTo("ERROR");
+        Assertions.assertThat(errorevents.get(0).getMessage()).isEqualTo("third message");
+        Assertions.assertThat(errorevents.get(1).getLevel()).isEqualTo(ch.qos.logback.classic.Level.ERROR);
+        Assertions.assertThat(errorevents.get(1).getLoggerName()).isEqualTo("ERROR");
+        Assertions.assertThat(errorevents.get(1).getMessage()).isEqualTo("fourth message");
+    }
 }
