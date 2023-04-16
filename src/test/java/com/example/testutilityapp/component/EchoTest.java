@@ -1,17 +1,10 @@
-package com.example.testutilityapp.controller;
-
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+package com.example.testutilityapp.component;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -19,21 +12,15 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.example.testutilityapp.form.EchoForm;
-import com.example.testutilityapp.service.TranslateCaseService;
 
 import jakarta.servlet.http.HttpSession;
 
-@WebMvcTest(controllers = EchoController.class)
-class EchoControllerTest {
+@SpringBootTest
+@AutoConfigureMockMvc
+class EchoTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @MockBean
-    private TranslateCaseService translateCaseService;
-
-    @Captor
-    private ArgumentCaptor<String> stringCaptor;
 
     @Test
     void 画面表示() throws Exception {
@@ -55,8 +42,6 @@ class EchoControllerTest {
 
     @Test
     void echo正常系() throws Exception {
-        when(translateCaseService.execute(anyString())).thenReturn("anyString");
-
         MvcResult results = this.mockMvc.perform(MockMvcRequestBuilders.post("/echo").param("text", "test text"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("echo/output"))
@@ -66,13 +51,8 @@ class EchoControllerTest {
         MockHttpServletRequest returnReq = results.getRequest();
         HttpSession afterSession = returnReq.getSession(false);
         Assertions.assertThat(afterSession).isNull();
-
         EchoForm echoForm = (EchoForm) results.getRequest().getAttribute("echoForm");
-        // TranslateCaseServiceの返り値
-        Assertions.assertThat(echoForm.getText()).isEqualTo("anyString");
-
-        verify(translateCaseService, times(1)).execute(stringCaptor.capture());
-        Assertions.assertThat(stringCaptor.getValue()).isEqualTo("test text");
+        Assertions.assertThat(echoForm.getText()).isEqualTo("TEST TEXT");
     }
 
     @Test
@@ -110,8 +90,6 @@ class EchoControllerTest {
 
     @Test
     void echo入力テキストが最大文字数() throws Exception {
-        when(translateCaseService.execute(anyString())).thenReturn("anyString");
-
         MvcResult results = this.mockMvc
                 .perform(MockMvcRequestBuilders.post("/echo").param("text", "12345678901234567890"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -123,10 +101,8 @@ class EchoControllerTest {
         HttpSession afterSession = returnReq.getSession(false);
         Assertions.assertThat(afterSession).isNull();
         EchoForm echoForm = (EchoForm) results.getRequest().getAttribute("echoForm");
-        Assertions.assertThat(echoForm.getText()).isEqualTo("anyString");
+        Assertions.assertThat(echoForm.getText()).isEqualTo("12345678901234567890");
 
-        verify(translateCaseService, times(1)).execute(stringCaptor.capture());
-        Assertions.assertThat(stringCaptor.getValue()).isEqualTo("12345678901234567890");
     }
 
 }
