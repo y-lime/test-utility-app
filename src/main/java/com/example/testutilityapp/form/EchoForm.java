@@ -9,7 +9,7 @@ public class EchoForm implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotEmpty
-    @Size(max = 100)
+    @Size(max = 20)
     private String text;
 
     public String getText() {
